@@ -1,3 +1,7 @@
+# Input two tab-delimited files (1. wg_file, 2. element_file), ea. specifying:
+#  1. i. Chromosome (Place-holder), ii. Start (Place-holder) & iii. End site (Place-holder) and iv. MP (Required) of placed genomic CpGs
+#  2. i. Corresponding promoter ID (Place-holder, can be random), ii. Distance from site (Required) and iii. MP (Required).
+
 compute_tvd_pvalues <- function(wg_file, element_file, n_perm = 1000) {
   library(data.table)
   compute_tvd <- function(x, y, breaks = 99) { # Nested function
