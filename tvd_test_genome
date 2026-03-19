@@ -2,7 +2,7 @@
 #  1. i. Chromosome (Place-holder), ii. Start (Place-holder) & iii. End site (Place-holder) and iv. MP (Required) of placed genomic CpGs
 #  2. i. Corresponding promoter ID (Place-holder, can be random), ii. Distance from site (Required) and iii. MP (Required).
 
-compute_tvd_pvalues <- function(wg_file, element_file, n_perm = 1000) {
+tvd_test_genome <- function(wg_file, element_file, n_perm = 1000) {
   library(data.table)
   compute_tvd <- function(x, y, breaks = 99) { # Nested function
     if (length(y) == 0) { warning("Empty y vector - returning NA"); return(NA) }
@@ -48,5 +48,5 @@ plot_pvalue_heatmap <- function(p_values_df, title) {
 }
 
 # Usage:
-pvalues_TSS = compute_tvd_pvalues("CG_placedOnly.mp", "MP_TSS_hg38.tsv") #⌛
-heatmap_TSS=plot_pvalue_heatmap(pvalues_TSS, "GSS")
+pvalues_TSS = tvd_test_genome("CG_placedOnly.mp", "MP_TSS_hg38.tsv") #⌛
+heatmap_TSS = plot_pvalue_heatmap(pvalues_TSS, "GSS")
